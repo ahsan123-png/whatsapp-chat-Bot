@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message</title>
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="{% url "home" %}">Home</a></li>
+            <li><a href="{% url "viewContacts" %}">View Contacts</a></li>
+            <li><a href="{% url "sendMessage" %}">Send Message</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Send Message</h1>
+        <form id="sendMessageForm" method='POST' action="{% url "messages" %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
+
